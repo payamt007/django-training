@@ -1,30 +1,20 @@
 import graphene
 from graphene_django import DjangoObjectType
-
+from graphene_django.forms.mutation import DjangoModelFormMutation
+from graphene import Field, List, ObjectType
 from prgraph.models import Category, Ingredient
+from prgraph.forms import SignUpForm
+from prgraph import schema as prgraph_schema
 
-class CategoryType(DjangoObjectType):
-    class Meta:
-        model = Category
-        fields = ("id", "name", "ingredients")
+# mxing all Queries and Mutations from different modules
 
-class IngredientType(DjangoObjectType):
-    class Meta:
-        model = Ingredient
-        fields = ("id", "name", "notes", "category")
 
-class Query(graphene.ObjectType):
-    all_ingredients = graphene.List(IngredientType)
-    category_by_name = graphene.Field(CategoryType, name=graphene.String(required=True))
+class Mutation(prgraph_schema.Mutation, graphene.ObjectType):
+    pass
 
-    def resolve_all_ingredients(root, info):
-        # We can easily optimize query count in the resolve method
-        return Ingredient.objects.select_related("category").all()
 
-    def resolve_category_by_name(root, info, name):
-        try:
-            return Category.objects.get(name=name)
-        except Category.DoesNotExist:
-            return None
+class Query(prgraph_schema.Query, graphene.ObjectType):
+    pass
 
-schema = graphene.Schema(query=Query)
+
+schema = graphene.Schema(query=Query, mutation=Mutation)

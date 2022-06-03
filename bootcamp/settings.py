@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'prform',
     'prfiles',
     'prfilter',
@@ -64,7 +65,9 @@ ROOT_URLCONF = 'bootcamp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'prfilter/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'prfilter/templates'),
+                 os.path.join(BASE_DIR, 'prgraph/templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     "SCHEMA": "schema.schema"
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+CORS_ALLOWED_ORIGINS = ["https://studio.apollographql.com/graph/Payam-Graph"]
