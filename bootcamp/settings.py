@@ -144,3 +144,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 CORS_ALLOWED_ORIGINS = ["https://studio.apollographql.com/graph/Payam-Graph"]
+
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [BASE_DIR / "static"]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
