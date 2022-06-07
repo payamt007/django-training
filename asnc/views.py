@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 import time, asyncio
-from movies.models import Movie
-from stories.models import Story
+from prfilter.models import Manufacturer
+from prfilter.models import Product
 from asgiref.sync import sync_to_async
 
 # helper funcs
@@ -9,14 +9,14 @@ from asgiref.sync import sync_to_async
 def get_movies():
     print('prepare to get the movies...')
     time.sleep(2)
-    qs = Movie.objects.all()
+    qs = Manufacturer.objects.all()
     print(qs)
     print('got all the movies!')
 
 def get_stories():
     print('prepare to get the stories...')
     time.sleep(5)
-    qs = Story.objects.all()
+    qs = Product.objects.all()
     print(qs)
     print('got all the stories!')
 
@@ -24,7 +24,7 @@ def get_stories():
 def get_movies_async():
     print('prepare to get the movies...')
     time.sleep(2)
-    qs = Movie.objects.all()
+    qs = Manufacturer.objects.all()
     print(qs)
     print('got all the movies!')
 
@@ -32,7 +32,7 @@ def get_movies_async():
 def get_stories_async():
     print('prepare to get the stories...')
     time.sleep(5)
-    qs = Story.objects.all()
+    qs = Product.objects.all()
     print(qs)
     print('got all the stories!')
 
