@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +48,8 @@ INSTALLED_APPS = [
     'prfiles',
     'prfilter',
     'graphene_django',
-    'prgraph'
+    'prgraph',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -150,3 +152,5 @@ CORS_ALLOWED_ORIGINS = ["https://studio.apollographql.com/graph/Payam-Graph"]
 STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+ASGI_APPLICATION = "bootcamp.asgi.application"

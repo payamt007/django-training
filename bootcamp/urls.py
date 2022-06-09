@@ -25,4 +25,5 @@ urlpatterns = [
     path('prfilter/', include('prfilter.urls')),
     path('prgraph/', include('prgraph.urls')),
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('chat/', include('chat.urls')),
 ]
